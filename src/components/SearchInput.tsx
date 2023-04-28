@@ -17,7 +17,7 @@ const SearchInput = ({
   setValue,
   isLoading,
 }: SIProps) => (
-  <div className="w-full max-w-lg my-10">
+  <div className="w-full max-w-lg">
     <div className="indicator w-full max-w-lg">
       <input
         onChange={setValue}

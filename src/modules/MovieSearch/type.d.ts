@@ -11,3 +11,8 @@ type SearchMoviesRes = {
   total_pages: number;
   total_results: number;
 };
+
+type MovieSearchAtom = {
+  query: string;
+  index?: number | null;
+}

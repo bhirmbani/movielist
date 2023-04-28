@@ -1,24 +1,30 @@
 import { SearchInput } from "@/components";
 import useDebounce from "@/utils/hooks/useDebounce";
 import { useQuery } from "@tanstack/react-query";
+import { useAtom } from "jotai";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { movieSearchAtom } from "./atom";
 import { searchMovies } from "./services";
 
 const MovieSearchModule = () => {
-  const [value, setValue] = useState("");
+  const [state, setState] = useAtom(movieSearchAtom);
   const { data, refetch, isRefetching, isFetched } = useQuery<SearchMoviesRes>(
     ["searchMovies"],
     async () => {
-      return await searchMovies({ query: value });
+      return await searchMovies({ query: state.query });
     },
     { enabled: false }
   );
 
-  const debouncedVal = useDebounce(value, 350);
+  const debouncedVal = useDebounce(state.query, 350);
 
   const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    setState({ query: e.target.value });
+  };
+
+  const onClickMovie = (index: number) => {
+    setState((prevState) => ({ ...prevState, index }));
   };
 
   useEffect(() => {
@@ -32,17 +38,19 @@ const MovieSearchModule = () => {
   return (
     <SearchInput
       setValue={(val) => onChangeValue(val)}
-      value={value}
-      isResult={
-        !isRefetching && isFetched && debouncedVal !== "" ? true : false
-      }
+      value={state.query}
+      isResult={!isRefetching && isFetched && state.query !== "" ? true : false}
       isLoading={isRefetching}
       placeholder="Search movies"
       ResultComponent={
         data?.results.length !== 0 ? (
           <ul className="dropdown-content flex flex-row menu max-h-search-result overflow-scroll p-2 shadow bg-base-100 rounded-box">
-            {data?.results.map((each) => (
-              <li key={each.id} className="min-w-full flex flex-row">
+            {data?.results.map((each, index) => (
+              <li
+                onClick={() => onClickMovie(index)}
+                key={each.id}
+                className="min-w-full flex flex-row"
+              >
                 <a className="w-full">
                   <Image
                     alt={each.title}

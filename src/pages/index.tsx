@@ -10,11 +10,12 @@ export default function Home() {
       className={`flex min-h-screen flex-col items-center ${inter.className}`}
     >
       <Navbar />
-      <div className="mt-10">
-        <MovieCardItemModule />
-      </div>
-      <div className="flex flex-col w-full items-center flex-1">
+      <div className="flex flex-col w-full items-center flex-1 my-12">
         <MovieSearchModule />
+      </div>
+
+      <div className="absolute top-[55%] max-w-[80%]">
+        <MovieCardItemModule />
       </div>
     </main>
   );

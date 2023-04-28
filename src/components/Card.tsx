@@ -1,16 +1,24 @@
-const Card = () => (
-  <div className="card card-side bg-base-100 shadow-xl">
+import Image from "next/image";
+
+interface CProps {
+  src: string;
+  alt: string;
+  title: string;
+  overview: string;
+  width: number;
+  height: number;
+}
+
+const Card = ({ src, alt, title, overview, width, height }: CProps) => (
+  <div className="card card-side bg-base-100 shadow-xl overflow-scroll">
     <figure>
-      <img
-        src="/images/stock/photo-1635805737707-575885ab0820.jpg"
-        alt="Movie"
-      />
+      <Image width={width} height={height} src={src} alt={alt} />
     </figure>
     <div className="card-body">
-      <h2 className="card-title">New movie is released!</h2>
-      <p>Click the button to watch on Jetflix app.</p>
+      <h2 className="card-title">{title}</h2>
+      <p className="text-ellipsis">{overview}</p>
       <div className="card-actions justify-end">
-        <button className="btn btn-primary">Watch</button>
+        <button className="btn btn-primary">Detail</button>
       </div>
     </div>
   </div>

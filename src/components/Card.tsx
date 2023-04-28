@@ -7,9 +7,10 @@ interface CProps {
   overview: string;
   width: number;
   height: number;
+  onClick: () => void;
 }
 
-const Card = ({ src, alt, title, overview, width, height }: CProps) => (
+const Card = ({ src, alt, title, overview, width, height, onClick }: CProps) => (
   <div className="card card-side bg-base-100 shadow-xl overflow-scroll">
     <figure>
       <Image width={width} height={height} src={src} alt={alt} />
@@ -18,7 +19,7 @@ const Card = ({ src, alt, title, overview, width, height }: CProps) => (
       <h2 className="card-title">{title}</h2>
       <p className="text-ellipsis">{overview}</p>
       <div className="card-actions justify-end">
-        <button className="btn btn-primary">Detail</button>
+        <button onClick={onClick} className="btn btn-primary">Detail</button>
       </div>
     </div>
   </div>

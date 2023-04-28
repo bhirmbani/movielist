@@ -1,29 +1,32 @@
 import { Card } from "@/components";
 import { useQuery } from "@tanstack/react-query";
 import { useAtomValue } from "jotai";
+import { useRouter } from "next/router";
 import { movieSearchAtom } from "../MovieSearch/atom";
 
 const MovieCardItemModule = () => {
+  const router = useRouter();
   const state = useAtomValue(movieSearchAtom);
   const { isFetched, isRefetching, data } = useQuery<SearchMoviesRes>(
     ["searchMovies"],
     { enabled: false }
   );
 
-  console.log(state)
-
   const picked = data?.results
     ? data?.results[state.index ? state.index : 0]
-    : { poster_path: "", title: "", overview: "" };
+    : { poster_path: "", title: "", overview: "", id: 0 };
 
   if (state.query === "" || (!state.index && state.index !== 0)) {
     return <p>Welcome to Movielist</p>;
   }
 
-  
+  const onClickDetail = () => {
+    router.push(`/detail?id=${picked.id}`);
+  };
 
   return (
     <Card
+      onClick={onClickDetail}
       alt={picked.title}
       title={picked.title}
       overview={picked.overview}

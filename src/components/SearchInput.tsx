@@ -18,7 +18,7 @@ const SearchInput = ({
   isLoading,
 }: SIProps) => (
   <div className="w-full max-w-lg">
-    <div className="indicator w-full max-w-lg">
+    <div className="w-full max-w-lg">
       <input
         onChange={setValue}
         value={value}
@@ -27,7 +27,7 @@ const SearchInput = ({
         className="input w-full max-w-lg"
       />
       {isLoading ? (
-        <span className="indicator-item top-[24px] right-[29px] bg-white border-white badge badge-secondary btn loading" />
+        <span className="w-full bg-transparent border-transparent btn loading" />
       ) : null}
     </div>
     {isResult ? ResultComponent : null}

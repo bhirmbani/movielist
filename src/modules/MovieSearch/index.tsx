@@ -33,8 +33,6 @@ const MovieSearchModule = () => {
     }
   }, [debouncedVal, refetch]);
 
-  console.log(data);
-
   return (
     <SearchInput
       setValue={(val) => onChangeValue(val)}

@@ -14,7 +14,7 @@ export default function Home() {
       <div className="mt-12">
         <Image alt="home cinema" width={200} height={200} src="../assets/home_cinema.svg" />
       </div>
-      <div className="flex flex-col w-full items-center flex-1 my-12">
+      <div className="flex flex-col w-full items-center flex-1 my-12 px-10">
         <MovieSearchModule />
       </div>
 

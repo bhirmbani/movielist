@@ -11,3 +11,6 @@ Nextjs React app to show list of movies and other features such as:
 - ***type.d.ts***: typescript definition.
 - ***atom.ts***: to store our application state.
 
+### How to run locally
+**Prerequisite**
+- node js version >= 16.13.0

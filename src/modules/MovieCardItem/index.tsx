@@ -14,7 +14,7 @@ const MovieCardItemModule = () => {
 
   const picked = data?.results
     ? data?.results[state.index ? state.index : 0]
-    : { poster_path: "", title: "", overview: "", id: 0 };
+    : { poster_path: "", title: "title", overview: "", id: 0 };
 
   if (state.query === "" || (!state.index && state.index !== 0)) {
     return null;

@@ -42,7 +42,7 @@ const MovieDetailModule = () => {
     }
   }, [router]);
 
-  return movieDetail.isLoading ? (
+  return movieDetail.isFetching ? (
     <p>Loading..</p>
   ) : (
     <div className="flex flex-1 w-full">

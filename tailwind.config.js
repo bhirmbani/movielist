@@ -13,7 +13,10 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       maxHeight: {
-        "search-result": "250px",
+        "search-result": "150px",
+      },
+      animation: {
+        "fade-out": "fadeOut 1s",
       },
     },
   },

@@ -12,7 +12,7 @@ interface CProps {
 
 const Card = ({ src, alt, title, overview, width, height, onClick }: CProps) => (
   <div className="card card-side bg-base-100 shadow-xl overflow-scroll">
-    <figure>
+    <figure className="px-5">
       <Image width={width} height={height} src={src} alt={alt} />
     </figure>
     <div className="card-body">

@@ -17,7 +17,7 @@ const MovieCardItemModule = () => {
     : { poster_path: "", title: "", overview: "", id: 0 };
 
   if (state.query === "" || (!state.index && state.index !== 0)) {
-    return <p>Welcome to Movielist</p>;
+    return null;
   }
 
   const onClickDetail = () => {
